@@ -1,0 +1,32 @@
+{
+  "name": "BTP_CI_CD_Deployment_CAPM",
+  "version": "1.0.0",
+  "dependencies": {
+    "@cap-js/postgres": "^2",
+    "@sap/cds": "^9",
+    "@sap/xssec": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "sql": {
+      "native_hana_associations": false
+    },
+    "requires": {
+      "[production]": {
+        "impl": "@cap-js/postgres",
+        "dialect": "postgres",
+        "kind": "postgres"
+      },
+      "[hybrid]": {
+        "auth": "xsuaa"
+      }
+    }
+  }
+}
