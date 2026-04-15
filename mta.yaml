@@ -31,6 +31,8 @@ modules:
     requires:
       - name: BTP_CI_CD_Deployment_CAPM-postgres
       - name: BTP_CI_CD_Deployment_CAPM-auth
+      - name: BTP_CI_CD_Deployment_CAPM-destination
+      - name: BTP_CI_CD_Deployment_CAPM-connectivity
 
   - name: BTP_CI_CD_Deployment_CAPM-postgres-deployer
     type: nodejs
@@ -81,3 +83,13 @@ resources:
       config:
         xsappname: BTP_CI_CD_Deployment_CAPM
         tenant-mode: dedicated
+  - name:  BTP_CI_CD_Deployment_CAPM-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+  - name: BTP_CI_CD_Deployment_CAPM-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite

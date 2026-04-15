@@ -2,30 +2,29 @@
   "name": "BTP_CI_CD_Deployment_CAPM",
   "version": "1.0.0",
   "dependencies": {
-    "@cap-js/postgres": "^2",
+    "@cap-js-community/odata-v2-adapter": "^1.15.10",
+    "@cap-js/postgres": "^2.2.0",
     "@sap/cds": "^9",
-    "@sap/xssec": "^4"
+    "@sap/xssec": "^4",
+    "child_process": "^1.0.2",
+    "fs-extra": "^11.3.4",
+    "path": "^0.12.7",
+    "pg": "^8.20.0",
+    "simple-git": "^3.36.0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
     "@sap/cds-dk": "^9"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "undeploy": "cf undeploy BTP_CI_CD_Deployment_CAPM --delete-services --delete-service-keys --delete-service-brokers"
   },
   "private": true,
   "cds": {
-    "sql": {
-      "native_hana_associations": false
-    },
     "requires": {
-      "[production]": {
-        "impl": "@cap-js/postgres",
-        "dialect": "postgres",
+      "db": {
         "kind": "postgres"
-      },
-      "[hybrid]": {
-        "auth": "xsuaa"
       }
     }
   }

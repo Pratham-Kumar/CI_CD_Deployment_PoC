@@ -6,10 +6,22 @@ using {
 } from '@sap/cds/common';
 
 entity Project : managed, cuid {
+    name         : String;
+    description  : String;
+    repo         : String;
+    branch       : String;
+    type         : String;
+    env          : String;
+    deployTarget : String;
+    subaccount   : String;
+    cfSpace      : String;
+    status       : String;
+}
 
-    projectName   : String;
-    description   : String;
-    repositoryURL : String;
-    branch        : String;
-    appType       : String;
+entity Pipeline : managed, cuid {
+    name        : String;
+    description : String;
+    project     : Association to Project;
+    trigger     : String;
+    status      : String;
 }
